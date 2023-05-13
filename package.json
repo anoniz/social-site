@@ -1,0 +1,22 @@
+{
+  "name": "social-site",
+  "version": "1.0.0",
+  "description": "social media site kind of, getting started",
+  "main": "index.js",
+  "scripts": {
+    "start":	"node src/server.js",
+    "dev": "env-cmd -f dev.env nodemon src/server.js"
+  },
+  "author": "Abdullatif Nizamani",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "bcrypt": "^5.1.0",
+    "env-cmd": "^10.1.0",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.1.0",
+    "multer": "^1.4.5-lts.1",
+    "sharp": "^0.32.1",
+    "validator": "^13.9.0"
+  }
+}
