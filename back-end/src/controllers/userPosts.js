@@ -70,9 +70,34 @@ const getAllPosts = async (req,res) => {
    }
 }
 
+// someone likes a post
+const likeAPost = async (req,res) => {
+   // needs
+   // who liked this post? req.user.id will tell us.
+   // need post id, where this liked happened..
+   const userId = req.user.id;
+   const postId = req.params.id;
+   const like = {
+      id: uuidv4().toString(),
+      UserId:userId,
+      PostId:postId,
+   }
+   try {
+     const resp = await postService.likePost(like);
+     if(!resp) {
+      return res.status(500).send("something went wrong with likeAPost");
+     }
+     return res.send(resp);
+   } catch(err) {
+      console.log(err);
+      return res.status(500).send("something went wrong with likeAPost");
+   }
+}
+
 module.exports=  {
     createPost,
     getSinglePost,
     getAllMyPosts,
-    getAllPosts
+    getAllPosts,
+    likeAPost
 }

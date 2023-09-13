@@ -17,13 +17,16 @@ const Post = db.define('Post', {
          type: DataTypes.STRING      // image url  
       },
       total_likes: {
-         type: DataTypes.INTEGER
+         type: DataTypes.INTEGER,
+         defaultValue: 0
       },
       total_comments: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        defaultValue: 0
       },
       total_shares: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        defaultValue: 0
       }
 }, {
    schema: "user_schema"

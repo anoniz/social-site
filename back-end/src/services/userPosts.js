@@ -1,5 +1,5 @@
-
 const { UserPost } = require('../models/user/index');
+const { postLike } = require('../models/user/index');
 
 const createPost = async (post) => {
      try {
@@ -40,10 +40,28 @@ const getAllMyPosts = async (userId) => {
     }
 };
 
+const likePost = async (like) => {
+    try {
+        // need userId and PostId to create a like on a post.
+        const createdLike = await postLike.create(like);
+        if(!createdLike) {
+          return {error:{message:"something went wrong try again", code: 500}};
+        }
+        // now if like is created, we also need to update the post and return updated post
+       const updatedPost = await UserPost.increment('total_likes', {where: {id:like.PostId}});
+       console.log(updatedPost)
+       return {likedPost:updatedPost}
+
+    } catch(err) {
+      console.log(err);
+      return {error:{message:"something went wrong try again",code:500}}
+    }
+}
 
 
 module.exports = {
     createPost,
     getSinglePost,
     getAllMyPosts,
+    likePost
 }
