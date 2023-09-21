@@ -11,7 +11,8 @@ const Comment = db.define('Comment', {
         allowNull: false
     },
     total_likes: {
-        type: DataTypes.INTEGER
+        type: DataTypes.INTEGER,
+        defaultValue: 0
     }
 }, {
     // Other model options go here

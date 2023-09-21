@@ -11,10 +11,12 @@ const Post = db.define('Post', {
          allowNull: false
       },
       post_image: {
-         type: DataTypes.STRING      // image url   
+         type: DataTypes.STRING,      // image url
+         defaultValue: ""   
       },
       post_video: {
-         type: DataTypes.STRING      // image url  
+         type: DataTypes.STRING,      // image url 
+         defaultValue: "" 
       },
       total_likes: {
          type: DataTypes.INTEGER,

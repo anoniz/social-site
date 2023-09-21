@@ -6,17 +6,17 @@ const { upload , errorMiddleware } = avatarUpload;
 //const sharp = require('sharp');
 const { userController } = require('../controllers');
 
-router.post('/signup', userController.signup);
-router.post('/login',auth, userController.login);
-router.post('/logout-all',userController.logoutAll);
+router.post('/api/signup', userController.signup);
+router.post('/api/login',auth, userController.login);
+router.post('/logout-all',userController.logoutAll); // see later
+router.post('/api/logout',userController.logout);
 router.post('/me/change-password',auth,userController.changePassword);
-router.post('/forgot-password',userController.sendForgotPasswordCode);
+router.post('/api/forgot-password',userController.sendForgotPasswordCode);
 
 router.post('/me/avatar',upload.single('avatar'),userController.uploadAvatar,(err,req,res,next) => {
     return res.status(401).send({error: err.message})
 });
 
-router.get('/logout',auth,userController.logout);
 router.get('/confirmation/:token',userController.verifyEmail);
 router.get('/forgot-password/:code',userController.recieveForgotPasswordCode) // for getting code from url and verifying that code exists in db.
 // router.get('/me/:id',userController.getProfile);
@@ -42,6 +42,14 @@ router.delete('/me',);
 //     }
 // })
   
+
+// Sign Up: POST /api/signup
+// Log In: POST /api/login
+// Log Out (optional, if you have sessions): POST /api/logout
+// Change Password: POST /api/users/:userId/change-password
+// Forgot Password (to request a reset link): POST /api/forgot-password
+// Reset Password (using a reset token): POST /api/reset-password
+
 
 
 module.exports = router;

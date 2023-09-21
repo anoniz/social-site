@@ -61,7 +61,7 @@ const signup = async (req,res) => {
          if(resp3.error) {
             return res.status(500).send({msg:'Technical Issue!, Please click on resend for verify your Email.'});
          }
-            res.status(200).send(`A verification email has been sent to 
+            res.status(201).send(`A verification email has been sent to 
             ${resp2.createdUser.email}. It will be expire in 6 hours. 
             If you not get verification Email click on resend token.`);
 
